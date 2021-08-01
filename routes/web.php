@@ -14,11 +14,17 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function(){
+    return view('auth.login');
+});
 
 
 Route::get('/admin', function () {
     return view('admin.index');
+});
+
+Route::get('/home', function () {
+    return view('homeUser.index');
 });
 
 /* Route::get('/admin/usuarios',function(){
@@ -41,6 +47,8 @@ Route::put('usuario/{id}',[UserController::class,'update'])
 
 Route::resource('usuario','App\Http\Controllers\UserController');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
-    return view('admin.index');
-})->name('admin');
+Route::get('/admin', [UserController::class,'index']) 
+
+    -> middleware('auth.admin') 
+
+    -> name('admin.index'); 

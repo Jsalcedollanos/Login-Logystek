@@ -16,6 +16,20 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        { 
+
+            if (auth()->check()) { 
+    
+                if (auth()->user()->rol == 'admin' || auth()->user()->rol == 'super admin') { 
+    
+                    return $next($request); 
+    
+                } 
+    
+            } 
+    
+            return redirect()->to('/home');    
+    
+        } 
     }
 }

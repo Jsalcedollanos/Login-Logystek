@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Bienvenido')
 
 @section('content_header')
     <h1>Logystek</h1>
